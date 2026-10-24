@@ -3,10 +3,15 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parse } from "csv-parse/sync";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { computeRisk } from "../src/lib/risk";
 import { parseISO } from "date-fns";
 
-const prisma = new PrismaClient();
+// Session pooler (DIRECT_URL) handles long runs of bulk writes better than the
+// transaction pooler.
+const prisma = new PrismaClient({
+  adapter: new PrismaPg({ connectionString: process.env.DIRECT_URL ?? process.env.DATABASE_URL }),
+});
 
 async function createInChunks<T>(
   data: T[],

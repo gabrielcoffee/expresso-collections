@@ -3,12 +3,13 @@
 // (a re-seed would wipe them). Run: `npx tsx prisma/recompute-risk.ts`
 import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { computeRisk, appToday, type RiskInput } from "../src/lib/risk";
 
 // Use the session pooler (DIRECT_URL) — better for many sequential writes than the
 // transaction pooler.
 const prisma = new PrismaClient({
-  datasources: { db: { url: process.env.DIRECT_URL ?? process.env.DATABASE_URL } },
+  adapter: new PrismaPg({ connectionString: process.env.DIRECT_URL ?? process.env.DATABASE_URL }),
 });
 
 async function main() {

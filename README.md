@@ -5,7 +5,7 @@
 Built solo in five days. Starting from ~8,000 raw, unlabeled invoices, the app scores each one for risk, lets an analyst work the queue (status, notes, payment agreements, follow-ups, all audit-logged), generates PDF reports, runs scheduled automations, and includes a Claude-powered agent that answers questions about the portfolio and proposes actions the analyst confirms.
 
 - **Live app:** https://paggo-case-iota.vercel.app
-- **Demo account:** `demo@expresso.dev` / `demo1234`, or the "Logar para a demo" button
+- **Demo:** click "Logar para a demo" on the login page
 - **Português:** [jump to the Portuguese version](#português)
 
 **Stack:** Next.js 16 (App Router, Server Actions) · TypeScript · Tailwind v4 + shadcn/ui · PostgreSQL (Supabase) · Prisma 6 · Claude API (tool use) · @react-pdf/renderer · Recharts · Vitest
@@ -88,7 +88,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 CRON_SECRET=                           # optional, protects GET /api/cron/automations
 ```
 
-In the Supabase dashboard, enable the Email/Password provider. Google OAuth is optional.
+The login page has a single demo button that signs in as `demo@expresso.dev` / `demo1234`. Create that user in Supabase (Authentication → Users → Add user, with "Auto confirm" on).
 
 ```bash
 npm run test:unit       # pure logic, no database, about 1.5 s
@@ -112,7 +112,7 @@ PDF, executa **automações agendadas**, e inclui um **agente de IA** que respon
 executa ações sob confirmação humana.
 
 - **App publicado:** https://paggo-case-iota.vercel.app
-- **Conta de teste:** `demo@expresso.dev` / `demo1234` (login por email/senha — sem precisar do Google)
+- **Demo:** clique em "Logar para a demo" na tela de login
 
 ### O que tem
 
@@ -160,8 +160,8 @@ npm run db:seed         # importa o CSV + pré-computa o risco (~8000 faturas)
 > re-derivados do CSV) e limpa todas as tabelas de uso (notas, follow-ups, acordos, auditoria,
 > agent plans, automações, chats). É idempotente.
 
-Auth (Supabase dashboard): habilite o provider **Email/Password**; em dev, desligue "Confirm email"
-para o signup já criar sessão. Google OAuth é opcional.
+Auth: a tela de login tem só o botão de demo, que entra como `demo@expresso.dev` / `demo1234`. Crie esse
+usuário no Supabase (Authentication → Users → Add user, com "Auto confirm" ligado).
 
 Rodar:
 

@@ -2,7 +2,7 @@
 
 **A B2B collections cockpit with an AI agent that can only act with a human's approval.**
 
-Built in five days as my case for the Paggo University selection process. Starting from ~8,000 raw, unlabeled invoices, the app scores each one for risk, lets an analyst work the queue (status, notes, payment agreements, follow-ups, all audit-logged), generates PDF reports, runs scheduled automations, and includes a Claude-powered agent that answers questions about the portfolio and proposes actions the analyst confirms.
+Built solo in five days. Starting from ~8,000 raw, unlabeled invoices, the app scores each one for risk, lets an analyst work the queue (status, notes, payment agreements, follow-ups, all audit-logged), generates PDF reports, runs scheduled automations, and includes a Claude-powered agent that answers questions about the portfolio and proposes actions the analyst confirms.
 
 - **Live app:** https://paggo-case-iota.vercel.app
 - **Demo account:** `demo@expresso.dev` / `demo1234`, or the "Logar para a demo" button
